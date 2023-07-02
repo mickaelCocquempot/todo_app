@@ -48,11 +48,45 @@ final routes = GoRouter(
                 child: const Text('Go to settings'),
               ),
               TextButton(
+                onPressed: () => context.push('/home/task'),
+                child: const Text('Go to tasks'),
+              ),
+              TextButton(
                 onPressed: () {
                   if (context.canPop()) {
                     context.pop();
                   } else {
                     context.push('/home/settings');
+                  }
+                },
+                child: const Text('Go back'),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+    GoRoute(
+      path: '/home/task',
+      builder: (context, state) {
+        return Container(
+          color: Colors.redAccent,
+          child: Column(
+            children: [
+              ElevatedButton(
+                onPressed: () => context.push('/home/settings'),
+                child: const Text('Go to settings'),
+              ),
+              ElevatedButton(
+                onPressed: () => context.push('/home/start'),
+                child: const Text('Go to start'),
+              ),
+              TextButton(
+                onPressed: () {
+                  if (context.canPop()) {
+                    context.pop();
+                  } else {
+                    context.push('/home/start');
                   }
                 },
                 child: const Text('Go back'),
